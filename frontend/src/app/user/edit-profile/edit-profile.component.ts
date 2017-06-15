@@ -23,7 +23,9 @@ export class EditProfileComponent implements OnInit {
 
   user;
   userPic: any;
-  userPicBase64;
+  userPicBase64: any;
+  newProfilePic: any;
+  loading: boolean = false;
 
   changeProfilePic(event, fileID) {
     this.userPicBase64 = "";
