@@ -1,0 +1,28 @@
+<md-toolbar color="primary" class="app-menu-bar">
+    <a md-button [routerLink]="['/']">home</a>
+    <!--Pull right button-->
+    <span style="flex: 1 1 auto;"></span>
+    <button md-button [mdMenuTriggerFor]="menu">
+        <!--<md-icon>-->
+            <i *ngIf="!user.profilePic" class="fa fa-user-circle fa-2x" aria-hidden="true"></i>&nbsp;
+            <img *ngIf="user.profilePic" class="profile-image" src="{{user.profilePic}}">&nbsp;
+            {{user.firstName}} &nbsp; {{user.lastName}}
+        <!--</md-icon>-->
+    </button>
+
+    <!--Sub menu for disaplay-->
+    <md-menu #menu="mdMenu">
+        <a md-menu-item [routerLink]="['/profile']">
+            <i class="fa fa-cog" aria-hidden="true"></i> &nbsp;
+            <span>แก้ไขโปรไฟล์</span>
+        </a>
+
+        <a md-menu-item [routerLink]="['/login']">
+            <i class="fa fa-power-off" aria-hidden="true"></i> &nbsp;
+            <span>ออกจากระบบ</span>
+        </a>
+    </md-menu>
+
+
+</md-toolbar>
+<br>

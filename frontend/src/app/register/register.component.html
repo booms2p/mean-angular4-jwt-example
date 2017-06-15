@@ -1,0 +1,63 @@
+<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center">
+    <div fxFlex="35">
+        <md-card>
+            <div fxLayout="row" fxLayoutAlign="center stretch">
+                <h3>สมัครสมาชิก</h3>
+            </div>
+            <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+                <div fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="10px" [ngClass]="{ 'has-error': !firstName.valid }">
+                    <div fxFlex="90">
+                        <md-input-container style="width: 100%">
+                            <input mdInput placeholder="ชื่อ" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" required>
+                            <md-error>กรุณาระบุ ชือ</md-error>
+                        </md-input-container>
+                    </div>
+                </div>
+
+                <div fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="10px" [ngClass]="{ 'has-error': f.submitted && !lastName.valid }">
+                    <div fxFlex="90">
+                        <md-input-container style="width: 100%">
+                            <input mdInput placeholder="นามสกุล" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" required>
+                            <md-error>กรุณาระบุ นามสกุล</md-error>
+                        </md-input-container>
+                    </div>
+                </div>
+
+                <div fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="10px" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+                    <div fxFlex="90">
+                        <md-input-container style="width: 100%">
+                            <input mdInput placeholder="ชื่อผู้ใช้งาน" name="username" [(ngModel)]="model.username" #username="ngModel" required>
+                            <md-error>กรุณาระบุ ชื่อผู้ใช้งาน</md-error>
+                        </md-input-container>
+                    </div>
+                </div>
+
+                <div fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="10px" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+                    <div fxFlex="90">
+                        <md-input-container style="width: 100%">
+                            <input mdInput type="password" name="password" [(ngModel)]="model.password" #password="ngModel" required>
+                            <md-placeholder>
+                                <span mdPrefix class="fa fa-lock">&nbsp; รหัสผ่าน</span>
+                            </md-placeholder>
+                            <md-error>กรุณาระบุ รหัสผ่าน</md-error>
+                        </md-input-container>
+                    </div>
+                </div>
+
+                <br>
+                <div fxLayout="row" fxLayoutAlign="center stretch">
+                    <div fxFlex="90">
+                        <button md-raised-button [disabled]="loading" color="primary" style="width: 100%">
+                        สมัครสมาชิก
+                        
+                        <i *ngIf="loading" class="fa fa-spinner fa-spin fa-lg fa-fw"></i>
+                        <span  class="sr-only">...</span>
+                    </button>
+
+                    </div>
+                </div>
+
+            </form>
+        </md-card>
+    </div>
+</div>

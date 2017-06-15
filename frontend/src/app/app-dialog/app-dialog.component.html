@@ -1,0 +1,18 @@
+<div *ngIf="data" style="text-align: center">
+    <md-dialog-content>
+        <div fxLayout="row" fxLayoutAlign="center center">
+            <h3>รายการเสร็จสมบูรณ์</h3>
+        </div>
+    </md-dialog-content>
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <md-dialog-actions>
+            <button md-raised-button md-dialog-close color="primary" (click)="navigate();">ตกลง</button>
+        </md-dialog-actions>
+    </div>
+</div>
+
+<div *ngIf="!data" style="text-align: center">
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <md-spinner>Loading...</md-spinner>
+    </div>
+</div>

@@ -1,0 +1,94 @@
+<menu-bar></menu-bar>
+<br>
+<!--{{user | json}}
+
+<br><br>-->
+<div fxLayout="row" fxLayoutAlign="center stretch">
+    <h2>แก้ไขข้อมูลผู้ใช้งาน</h2>
+</div>
+<!--<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center">-->
+<!--<div fxFlex="100">-->
+<!--<md-card>-->
+<!--<div fxLayout="row" fxLayoutAlign="center stretch">
+            <img class="profile-image-large" src="{{user.img}}">&nbsp;
+        </div>-->
+<form name="form" (ngSubmit)="f.form.valid && submitEditProfile()" #f="ngForm" novalidate>
+
+    <div fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="10px" fxLayout.xs="column">
+        <div fxFlex="30">
+            <div fxLayout="row" fxLayoutAlign="center stretch">
+                <img *ngIf="!userPicBase64" class="profile-image-large" src="{{userPic}}" type="file">
+                <img *ngIf="userPicBase64" class="profile-image-large" src="{{userPicBase64}}" type="file">
+            </div>
+            <br>
+            <div fxLayout="row" fxLayoutAlign="center stretch">
+                <label for="userProPic" style="cursor: pointer;" class="mat-raised-button"><b>เปลี่ยนรูป</b>
+                          <input type="file" id="userProPic"  [(ngModel)]="newProfilePic" name="userProPic" (change)="changeProfilePic($event, 'userProPic')" #userProPic="ngModel" hidden>
+                        </label>
+            </div>
+        </div>
+        <div fxFlex>
+            <div fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="10px" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+                <div fxFlex="90">
+                    <md-input-container style="width: 100%">
+                        <input mdInput placeholder="ชื่อผู้ใช้งาน" name="username" [(ngModel)]="user.username" #username="ngModel" required disabled>
+                    </md-input-container>
+                </div>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="10px" [ngClass]="{ 'has-error': !firstName.valid }">
+                <div fxFlex="45">
+                    <md-input-container style="width: 100%">
+                        <input mdInput placeholder="ชื่อ" name="firstName" [(ngModel)]="user.firstName" #firstName="ngModel" #firstName="ngModel" required>
+                    </md-input-container>
+                </div>
+                <div fxFlex="45">
+                    <md-input-container style="width: 100%">
+                        <input mdInput placeholder="นามสกุล" name="lastName" [(ngModel)]="user.lastName" #lastName="ngModel" required>
+                    </md-input-container>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="10px">
+                <div fxFlex="90">
+                    <md-input-container style="width: 100%">
+                        <input mdInput name="email" [(ngModel)]="user.email" #email="ngModel" required>
+                        <md-placeholder>
+                            <span mdPrefix class="fa fa-envelope">&nbsp; อีเมล์</span>
+                        </md-placeholder>
+                        <md-error>กรุณาระบุ อีเมล์</md-error>
+                    </md-input-container>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="10px">
+                <div fxFlex="90">
+                    <md-input-container style="width: 100%">
+                        <input mdInput name="address" [(ngModel)]="user.address" #address="ngModel" required>
+                        <md-placeholder>
+                            <span mdPrefix class="fa fa-home">&nbsp; ที่อยู่</span>
+                        </md-placeholder>
+                        <md-error>กรุณาระบุ ที่อยู่</md-error>
+                    </md-input-container>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="10px" fxLayout.xs="column">
+        <div fxFlex fxFlex.gt-xs="15%">
+            <button md-raised-button type="submit" [disabled]="loading" color="primary" style="width: 100%">
+                ยืนยัน
+                <i *ngIf="loading" class="fa fa-spinner fa-spin fa-lg fa-fw"></i>
+                <span  class="sr-only">...</span>
+              </button>
+        </div>
+        <div fxFlex fxFlex.gt-xs="15%">
+            <button type="reset" md-raised-button [disabled]="loading" color="warn" style="width: 100%">
+                ยกเลิก
+            </button>
+        </div>
+    </div>
+
+</form>
+<!--</md-card>-->
+<!--</div>-->
+<!--</div>-->
